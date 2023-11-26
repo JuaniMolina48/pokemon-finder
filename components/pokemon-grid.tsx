@@ -11,8 +11,6 @@ interface PokemonGridProps {
 export function PokemonGrid({pokemonList} : PokemonGridProps) {
     const  [ searchText, setSearchText ] = useState("");
 
-    console.log(pokemonList);
-
     const searchFilter = (pokemonList: any) => {
         return pokemonList.filter(
             (pokemon: any) => pokemon.name.toLowerCase().includes(searchText.toLowerCase())
@@ -24,9 +22,9 @@ export function PokemonGrid({pokemonList} : PokemonGridProps) {
     return (
         <>
         <div>
-            <h3 className='text-2xl py-6 text-center'> Search For Your Pokemon</h3>
+            <h3 className='text-2xl py-6 text-center'> Busca un Pokemon</h3>
             <div className='grid w-full max-w-sm items-center gap-1.5'>
-                <Label htmlFor='pokemonName'>Pokemon Name</Label>
+                <Label htmlFor='pokemonName'>Nombre del Pokemon</Label>
                 <Input 
                     type='text' 
                     value={searchText}
@@ -36,13 +34,13 @@ export function PokemonGrid({pokemonList} : PokemonGridProps) {
                     onChange={(e) => setSearchText(e.target.value)}              
                 />
             </div>
-            <h3 className="text-3xl pt-12 pb-6 text-center">Pokemon Collection</h3>
+            <h3 className="text-3xl pt-12 pb-6 text-center">Pokemones Disponibles</h3>
         </div>
 
-        <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
+        <div className="mb-32 grid text-center align-content lg:mb-0 lg:grid-cols-3 lg:text-left">
             {filteredPokemonList.map((pokemon : any) => {
                 return (
-                    <PokemonCard name={pokemon.name}/>
+                    <PokemonCard name={pokemon.name} key={pokemon.name + "Card"}/>
                 )})}
         </div>
         </>
