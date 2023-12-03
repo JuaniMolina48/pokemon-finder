@@ -41,17 +41,13 @@ export default async function PokemonPage({ params } : {params: { pokemonName: s
 
                     return (
                         <div className="flex items-stretch" style={{width: 'auto'}} key={statName}>
-                            <h3 className="p-3 w-2/4">{statName}: {statValue}</h3>
+                            <h3 className="p-3 w-2/4">{statName.charAt(0).toUpperCase() + statName.slice(1)}: {statValue}</h3>
                             <Progress className="w-2/4 m-auto" value={statValue}/>
                         </div>
                         )
                 })}
             </div>
             </CardContent>
-            
-            
         </Card>
-
-
     )
 }
